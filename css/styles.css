@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap");
 body {
   font-family: "Roboto", sans-serif;
@@ -25,8 +26,11 @@ body {
   font-weight: 700;
   font-size: 12px;
   text-decoration: none;
-  border: 0;
+  background: none;
+  border: 1px transparent solid;
+  box-sizing: border-box;
   border-radius: 2px;
+  transition: 0.2s;
 }
 .btn--primary {
   background-color: #d2e1ff;
@@ -35,6 +39,28 @@ body {
 .btn--primary:hover {
   background-color: #9fbfff;
 }
+.btn--danger {
+  background-color: #ffd7d7;
+  color: #d43f3f;
+}
+.btn--danger:hover {
+  background-color: #ffa4a4;
+}
+.btn--secondary {
+  background-color: #4c85ff;
+  color: #fff;
+}
+.btn--secondary:hover {
+  background-color: #9fbfff;
+}
+.btn--no-bg {
+  color: #adb4d2;
+  border: 1px solid #d1d1e4;
+}
+.btn--no-bg:hover {
+  color: #8c96c0;
+  border: 1px solid #8c96c0;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Quicksand", sans-serif;
@@ -42,19 +68,21 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-size: 48px;
   font-weight: 400;
+  color: #3d4f9f;
 }
 
 h1, h2 {
   font-size: 48px;
   margin-bottom: 28px;
-  color: #3d4f9f;
 }
 
 h3 {
   font-size: 36px;
+  margin-bottom: 28px;
 }
 
 h4 {
+  margin-bottom: 80px;
   font-size: 24px;
 }
 
@@ -87,6 +115,18 @@ h5 {
 }
 .dots__item + .dots__item {
   margin-left: 12px;
+}
+
+.btn-group {
+  display: inline-flex;
+}
+.btn-group .btn:nth-child(1) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-group .btn:nth-child(2) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .section-header .section-inner {
@@ -239,6 +279,109 @@ h5 {
 
 .section-plan-and-manage {
   background-color: #f5f8ff;
+  position: relative;
+  overflow: hidden;
+}
+.section-plan-and-manage__content {
+  width: 50%;
+}
+.section-plan-and-manage__content h3 {
+  font-weight: 300;
+}
+.section-plan-and-manage__content h3 span {
+  font-weight: 500;
+}
+.section-plan-and-manage__content .text {
+  margin-bottom: 48px;
+  line-height: 2;
+}
+.section-plan-and-manage__content .btn-group svg {
+  margin-left: 4px;
+}
+.section-plan-and-manage__content .aside-image {
+  position: absolute;
+  top: 0;
+  left: 45%;
+}
+
+.section-features {
+  background: url(../upload/features-clouds.svg) no-repeat 50% 50%;
+}
+.section-features h4 {
+  font-weight: 500;
+}
+.section-features .btns {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.features-list {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 100px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.features-list__item {
+  flex-basis: 25%;
+  position: relative;
+  /*
+  иконки не выгружаются из макета без кружков, поэтому css кружки оказались не нужны
+  в идеале должно быть реализовано через css
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $base * 17;
+    height: $base * 17;
+    margin: 0 auto $base * 8;
+    border-radius: 100%;
+    background-color: #f1f5ff;
+  }
+  */
+}
+.features-list__item:not(:first-child) {
+  margin-left: 40px;
+}
+.features-list__item:not(:first-child)::before {
+  position: absolute;
+  top: 120px;
+  left: -34px;
+  right: 100%;
+  width: 28px;
+  height: 1px;
+  content: "";
+  background-color: #dae4fe;
+}
+.features-list__item-title {
+  margin-bottom: 28px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #4074f8;
+}
+.features-list__item-text {
+  line-height: 2;
+}
+.features-list img {
+  margin: 0 auto 32px;
+}
+
+.or-block {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 40px;
+}
+.or-block::before, .or-block::after {
+  display: block;
+  width: 16px;
+  margin: 0 16px;
+  height: 1px;
+  content: "";
+  background-color: #dae4fe;
 }
 
 .section-stats {

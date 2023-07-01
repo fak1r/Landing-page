@@ -62,8 +62,11 @@ body{
   font-weight: $fw_bold;
   font-size: $fw_sm;
   text-decoration: none;
-  border: 0;
+  background: none;
+  border: 1px transparent solid;
+  box-sizing: border-box;
   border-radius: 2px;
+  transition: $transition;
 
   &--primary {
     background-color: #d2e1ff;
@@ -71,6 +74,34 @@ body{
 
     &:hover {
       background-color: darken(#d2e1ff, 10%);
+    }
+  }
+
+  &--danger {
+    background-color: #ffd7d7;
+    color: #d43f3f;
+
+    &:hover {
+      background-color: darken(#ffd7d7, 10%);
+    }
+  }
+
+  &--secondary {
+    background-color: #4c85ff;
+    color: #fff;
+
+    &:hover {
+      background-color: darken(#d2e1ff, 10%);
+    }
+  }
+
+  &--no-bg {
+    color: #adb4d2;
+    border: 1px solid #d1d1e4;
+
+    &:hover {
+      color: darken(#adb4d2, 10%);
+      border: 1px solid darken(#adb4d2, 10%);;
     }
   }
 }
@@ -81,15 +112,21 @@ h1, h2, h3, h4, h5, h6{
   margin: 0;
   font-size: 48px;
   font-weight: $fw-regular;
+  color: #3d4f9f;
 }
 
 h1,h2 {
   font-size: 48px;
   margin-bottom: $base * 7;
-  color: #3d4f9f;
 }
-h3 { font-size: 36px; }
-h4 { font-size: 24px; }
+h3 {
+  font-size: 36px;
+  margin-bottom: $base * 7;
+}
+h4 {
+  margin-bottom: $base * 20;
+  font-size: 24px;
+}
 h5 {
   @include roboto;
   font-size: 10px;
@@ -121,6 +158,18 @@ h5 {
     & + & {
       margin-left: $base * 3;
     }
+  }
+}
+
+.btn-group {
+  display: inline-flex;
+  .btn:nth-child(1) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .btn:nth-child(2) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 // == / COMMON ==
@@ -248,6 +297,7 @@ h5 {
     &-content  {
       h2 {
         font-weight: $fw-light;
+
         span {
           font-weight: $fw-medium;
         }
@@ -309,12 +359,126 @@ h5 {
 // === PLAN-AND-MANAGE ===
 .section-plan-and-manage {
   background-color: #f5f8ff;
+  position: relative;
+  overflow: hidden;
+
+  &__content {
+    width: 50%;
+
+    h3 {
+      font-weight: $fw-light;
+
+      span {
+        font-weight: $fw-medium;
+      }
+    }
+
+    .text {
+      margin-bottom: $base * 12;
+      line-height: 2;
+    }
+
+    .btn-group {
+      svg {
+        margin-left: $base;
+      }
+    }
+
+    .aside-image {
+      position: absolute;
+      top: 0;
+      left: 45%;
+    }
+  }
 }
 // === / PLAN-AND-MANAGE ===
 
 
 // === FEATURES ===
-.section-features {}
+.section-features {
+  background: url(../upload/features-clouds.svg) no-repeat 50% 50%;
+
+  h4 {
+    font-weight: $fw-medium;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+.features-list {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 0 $base * 25;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  &__item {
+    flex-basis: 25%;
+    position: relative;
+
+    &:not(:first-child) {
+      margin-left: $base * 10;
+    }
+    &:not(:first-child)::before {
+      position: absolute;
+      top: 120px;
+      left: -34px;
+      right: 100%;
+      width: 28px;
+      height: 1px;
+      content: '';
+      background-color: #dae4fe;
+    }
+        /*
+        иконки не выгружаются из макета без кружков, поэтому css кружки оказались не нужны
+        в идеале должно быть реализовано через css
+        &-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: $base * 17;
+          height: $base * 17;
+          margin: 0 auto $base * 8;
+          border-radius: 100%;
+          background-color: #f1f5ff;
+        }
+        */
+    &-title {
+      margin-bottom: $base * 7;
+      font-size: $fs-md;
+      font-weight: $fw-bold;
+      color: #4074f8;
+    }
+    &-text {
+      line-height: 2;
+    }
+  }
+  img {
+    margin: 0 auto $base * 8;
+  }
+}
+
+.or-block {
+  display: inline-flex;
+  align-items: center;
+  font-weight: $fw_medium;
+  font-size: $fs-md;
+  line-height: $base * 10;
+  
+  &::before,
+  &::after {
+    display: block;
+    width: $base * 4;
+    margin: 0 $base * 4;
+    height: 1px;
+    content: '';
+    background-color: #dae4fe;
+  }
+}
 // === / FEATURES ===
 
 

@@ -8,6 +8,12 @@
 @mixin quicksand {
   font-family: 'Quicksand', sans-serif;
 }
+
+@mixin list-null {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 // == / MIXIN ==
 
 // == VARIABLES ==
@@ -18,8 +24,10 @@ $fw_regular: 400;
 $fw_medium: 500;
 $fw_bold: 700;
 
-$fw_sm: 12px;
+$fs-sm: 12px;
 $fs-md: 15px;
+$fs-lg: 18px;
+$fs-xl: 48px;
 
 $padding-vertical-xs: $base * 5;
 $padding-vertical-sm: $base * 15;
@@ -60,8 +68,9 @@ body{
   margin: 0;
   padding: $base * 3 $base * 4;
   font-weight: $fw_bold;
-  font-size: $fw_sm;
+  font-size: $fs-sm;
   text-decoration: none;
+  white-space: nowrap;
   background: none;
   border: 1px transparent solid;
   box-sizing: border-box;
@@ -101,7 +110,7 @@ body{
 
     &:hover {
       color: darken(#adb4d2, 10%);
-      border: 1px solid darken(#adb4d2, 10%);;
+      border: 1px solid darken(#adb4d2, 10%);
     }
   }
 }
@@ -129,8 +138,10 @@ h4 {
 }
 h5 {
   @include roboto;
+
   font-size: 10px;
   margin-bottom: $base * 4;
+  text-transform: uppercase;
 }
 
 .ta-c {
@@ -138,10 +149,10 @@ h5 {
 }
 
 .dots {
+  @include list-null;
+
   display: flex;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  justify-content: center;
 
   &__item {
     width: $base * 2;
@@ -202,10 +213,8 @@ h5 {
 }
 
 .nav-wrapper{
+  @include list-null;
   display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 
   &__item{
     & + & {
@@ -214,7 +223,7 @@ h5 {
     &-link {
       @include quicksand;
 
-      font-size: $fw_sm;
+      font-size: $fs-sm;
       color: $color-primary;
       text-decoration: none;
       font-weight: $fw_medium;
@@ -237,11 +246,9 @@ h5 {
 }
 
 .socials-wrapper{
+  @include list-null;
   display: flex;
-  margin: 0;
   align-items: center;
-  padding: 0;
-  list-style: none;
 
   &__item{
     & + & {
@@ -283,9 +290,7 @@ h5 {
 
 
 .slider-hero-image {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  @include list-null;
 
   &__item {
     height: $base * 150;
@@ -396,7 +401,7 @@ h5 {
 
 // === FEATURES ===
 .section-features {
-  background: url(../upload/features-clouds.svg) no-repeat 50% 50%;
+  background: url(../img/features-clouds.svg) no-repeat 50% 50%;
 
   h4 {
     font-weight: $fw-medium;
@@ -409,11 +414,11 @@ h5 {
   }
 }
 .features-list {
+  @include list-null;
+
   display: flex;
   justify-content: space-around;
   margin: 0 0 $base * 25;
-  padding: 0;
-  list-style: none;
   text-align: center;
 
   &__item {
@@ -433,20 +438,16 @@ h5 {
       content: '';
       background-color: #dae4fe;
     }
-        /*
-        иконки не выгружаются из макета без кружков, поэтому css кружки оказались не нужны
-        в идеале должно быть реализовано через css
-        &-icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: $base * 17;
-          height: $base * 17;
-          margin: 0 auto $base * 8;
-          border-radius: 100%;
-          background-color: #f1f5ff;
-        }
-        */
+    &-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: $base * 17;
+      height: $base * 17;
+      margin: 0 auto $base * 8;
+      border-radius: 100%;
+      background-color: #f1f5ff;
+    }
     &-title {
       margin-bottom: $base * 7;
       font-size: $fs-md;
@@ -484,10 +485,45 @@ h5 {
 
 // === STATS ===
 .section-stats {
+  display: flex;
   background-color: #e9efff;
-  .section-inner {
-    padding-top: $padding-vertical-sm;
-    padding-bottom: $padding-vertical-sm;
+
+  &__icon {
+    margin-bottom: $base * 6;
+
+  }
+
+  &__number {
+    @include quicksand;
+
+    margin-bottom: $base * 7;
+    font-size: $fs-xl;
+  }
+
+  &__text {
+    @include quicksand;
+
+    width: 35%;
+    font-size: $fs-lg;
+    font-weight: $fw_medium;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    padding: $base * 16 $base * 22;
+  }
+  &__left {
+    align-items: flex-end;
+    background-color: #6888ff;
+    color: #fff;
+    text-align: right;
+  }
+  &__right {
+    background-color: #e9efff;
+    color: #5e80ff;
   }
 }
 // === / STATS ===
@@ -497,18 +533,245 @@ h5 {
 .section-blog {
   background-color: #f5f8ff;
 }
+
+.slider-wrapper {
+  position: relative;
+  margin-bottom: $base * 25;
+}
+
+.slider-blog {
+  @include list-null;
+
+  background-color: #fff;
+  border: 1px solid #d8e3fe;
+  box-shadow: 0 15px 50px #eff4ff;
+
+  &__item {
+    display: flex;
+    padding: $base * 16 $base * 8;
+
+    &-gallery,
+    &-content {
+      flex-basis: 50%;
+    }
+
+    &-gallery {
+      display: grid;
+      grid-template-rows: repeat(2, 120px);
+      grid-template-columns: repeat(3, 120px);
+      grid-gap: 12px;
+      .image-link {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 15px 50px #e5ebf8;
+
+        .loupe {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          display: block;
+          width: $base * 16;
+          height: $base * 16;
+          background: #fff url(../img/blog-loup.png) no-repeat 50% 50%;
+          border-radius: 100%;
+          opacity: 0;
+          transition: $transition;
+          transform: translate(-50%, -50%);
+        }
+
+        &:hover {
+          .loupe {
+            opacity: 1;
+          }
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          content: '';
+        }
+
+        &--b {
+          grid-row: 1 / 3;
+          grid-column: 1 / 3;
+
+          &::before {
+            background: linear-gradient(transparent, rgba(#ffc735, 40%));
+          }
+        }
+
+        &--s-1 {
+          grid-row: 1 / 2;
+          grid-column: 3 / 4;
+
+          &::before {
+            background: linear-gradient(transparent, rgba(#ff3535, 40%));
+          }
+        }
+        &--s-2 {
+          grid-row: 2 / 3;
+          grid-column: 3 / 4;
+
+          &::before {
+            background: linear-gradient(transparent, rgba(#35aaff, 40%));
+          }
+        }
+      }
+    }
+
+    &-content {
+      margin-left: 5%;
+
+      .text {
+        margin-bottom: $base * 10;
+        font-size: $fs-md;
+        line-height: 2;
+      }
+    }
+  }
+
+  .btn--no-bg {
+    border: 0;
+    margin-left: $base * 4;
+  }
+}
+.btn-blog {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: $base * 10;
+  height: $base * 10;
+  background: url(../img/blog-arrow.svg) no-repeat 50% 50%;
+
+  &--prev {
+    right: 100%;
+    margin-right: $base * 16;
+    transform: translateY(-50%);
+  }
+  &--next {
+    left: 100%;
+    margin-left: $base * 16;
+    transform: translateY(-50%) rotate(180deg);
+
+  }
+}
 // === / BLOG ===
 
 
 // === QUOTES ===
 .section-quotes {
-  background-color: #eaf0ff;
+  background: linear-gradient(#eaebff, #f6f9ff);
+  .section-inner {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      font-weight: $fw_medium;
+    }
+  }
+  &__left,
+  &__right {
+    flex-basis: 45%;
+  }
+
+  &__left {
+    .text {
+      line-height: 2;
+    }
+  }
+}
+
+.slider-quotes {
+  @include list-null;
+  margin-bottom: $base * 20;
+
+  &__item {
+    position: relative;
+    padding: $base * 10 $base * 17 $base * 15;
+    border: 1px solid #d8e3fe;
+    background-color: #fff;
+    box-shadow: 0 5px 50px #d8e3fe;
+
+    &-text {
+      font-size: $fs-md;
+      line-height: 2;
+      color: #676f95;
+    }
+
+    &-photo {
+      position: absolute;
+      width: $base * 15;
+      height: $base * 15;
+      left: 50%;
+      top: 100%;
+      margin-top: -30px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 100%;
+      transform: translateX(-50%);
+    }
+  }
 }
 // === / QUOTES ===
 
 
 // === FAQ ===
-.section-faq {}
+.section-faq {
+  h4 {
+    font-weight: $fw_medium;
+  }
+}
+
+.faq-accordion {
+  @include list-null;
+
+  &__item {
+    border-bottom: 1px solid #d8e3fe;
+
+    //&--active {
+    //  .arrow {
+    //    stroke: #495274
+    //  }
+    //}
+    &-trigger{
+      display: flex;
+      padding: $base * 4;
+      cursor: pointer;
+
+      &-icon {
+        width: $base * 4;
+        text-align: center;
+        margin-right: $base * 4;
+
+        .arrow {
+          stroke: #8e96b7
+        }
+      }
+      &-text {}
+    }
+    &-content{
+      display: flex;
+      padding: 0 $base * 4 $base * 4 $base * 12;
+
+      &-text {
+        flex-grow: 1;
+        line-height: 2;
+      }
+      &-btn {
+        margin-left: $base * 15;
+      }
+    }
+  }
+}
 // === / FAQ ===
 
 

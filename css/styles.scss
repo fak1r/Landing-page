@@ -38,7 +38,8 @@ $transition: .2s;
 
 $color-divider: #d8e3fe;
 
-$color-primary: #697ca6;
+$color-white: #ffffff;
+$color-primary: #495274;
 $color-secondary: #6188ff;
 // == / VARIABLES ==
 
@@ -68,11 +69,11 @@ body{
   color: #7a85ad;
   border: 1px transparent solid;
   background-color: #efeff7;
-  border-radius: 2px;
+  border-radius: calc($base / 2);
 
   &--size-lg {
     padding: $base * 5 $base * 6;
-    border-radius: 5px;
+    border-radius: $base;
   }
 }
 
@@ -90,12 +91,12 @@ body{
   background: none;
   border: 1px transparent solid;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: calc($base / 2);
   transition: $transition;
 
   &--size-lg {
     padding: $base * 5 $base * 15;
-    border-radius: 5px;
+    border-radius: $base;
   }
 
   &--primary {
@@ -118,7 +119,7 @@ body{
 
   &--secondary {
     background-color: #4c85ff;
-    color: #fff;
+    color: $color-white;
 
     &:hover {
       background-color: darken(#d2e1ff, 10%);
@@ -126,10 +127,10 @@ body{
 
     &-inverted {
       color: #565f82;
-      background-color: #fff;
+      background-color: $color-white;
 
       &:hover {
-        background-color: darken(#fff, 10%);
+        background-color: darken($color-white, 10%);
       }
     }
   }
@@ -164,19 +165,22 @@ body{
   }
 }
 h1, h2, h3, h4, h5, h6{
-  @include quicksand;
 
   padding: 0;
   margin: 0;
   font-size: 48px;
   font-weight: $fw-regular;
-  color: #3d4f9f;
 }
 
-h1,h2 {
-  font-size: 48px;
-  margin-bottom: $base * 7;
+h2 {
+  @include roboto;
+
+  font-size: 10px;
+  margin-bottom: $base * 4;
+  text-transform: uppercase;
+  color: #3d4f9f;
 }
+/*
 h3 {
   font-size: 36px;
   margin-bottom: $base * 7;
@@ -191,6 +195,14 @@ h5 {
   font-size: 10px;
   margin-bottom: $base * 4;
   text-transform: uppercase;
+}*/
+
+.section-subtitle {
+  @include quicksand;
+
+  margin-bottom: $base * 7;
+  font-size: 48px;
+  color: #3d4f9f;
 }
 
 .ta-c {
@@ -232,6 +244,17 @@ h5 {
     border-bottom-left-radius: 0;
   }
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
 // == / COMMON ==
 
 
@@ -252,10 +275,13 @@ h5 {
   display: flex;
 }
 .logo{
-  width: $base * 6;
-  height: $base * 6;
-  background-color: #5e81ff;
-  border-radius: 100%;
+  &__link {
+    display: block;
+    width: $base * 6;
+    height: $base * 6;
+    background-color: #5e81ff;
+    border-radius: 100%;
+  }
 }
 .nav{
   margin-left: $base * 18;
@@ -349,7 +375,7 @@ h5 {
     background-size: cover;
 
     &-content  {
-      h2 {
+      .section-subtitle {
         font-weight: $fw-light;
 
         span {
@@ -371,8 +397,8 @@ h5 {
   width: $base * 13;
   height: $base * 13;
   border-radius: 100%;
-  background-color: #fff;
-  box-shadow: 0 10px 50px rgba(#c9d1e7, 0.6);
+  background-color: $color-white;
+  box-shadow: 0 $base * 2 $base * 12 rgba(#c9d1e7, 0.6);
 
   &::before {
     display: block;
@@ -419,7 +445,7 @@ h5 {
   &__content {
     width: 50%;
 
-    h3 {
+    .section-subtitle {
       font-weight: $fw-light;
 
       span {
@@ -452,8 +478,9 @@ h5 {
 .section-features {
   background: url(../img/features-clouds.svg) no-repeat 50% 50%;
 
-  h4 {
+  .section-subtitle {
     font-weight: $fw-medium;
+    font-size: $base * 6;
   }
 
   .btns {
@@ -479,10 +506,9 @@ h5 {
     }
     &:not(:first-child)::before {
       position: absolute;
-      top: 120px;
-      left: -34px;
-      right: 100%;
-      width: 28px;
+      top: $base * 30;
+      left: $base * -8;
+      width: $base * 7;
       height: 1px;
       content: '';
       background-color: #dae4fe;
@@ -498,6 +524,8 @@ h5 {
       background-color: #f1f5ff;
     }
     &-title {
+      @include roboto;
+
       margin-bottom: $base * 7;
       font-size: $fs-md;
       font-weight: $fw-bold;
@@ -505,6 +533,7 @@ h5 {
     }
     &-text {
       line-height: 2;
+      font-size: $fs-sm;
     }
   }
   img {
@@ -567,7 +596,7 @@ h5 {
   &__left {
     align-items: flex-end;
     background-color: #6888ff;
-    color: #fff;
+    color: $color-white;
     text-align: right;
   }
   &__right {
@@ -581,6 +610,11 @@ h5 {
 // === BLOG ===
 .section-blog {
   background-color: #f5f8ff;
+
+  .section-subtitle {
+    font-weight: $fw-medium;
+    font-size: $base * 6;
+  }
 }
 
 .slider-wrapper {
@@ -591,9 +625,9 @@ h5 {
 .slider-blog {
   @include list-null;
 
-  background-color: #fff;
+  background-color: $color-white;
   border: 1px solid #d8e3fe;
-  box-shadow: 0 15px 50px #eff4ff;
+  box-shadow: 0 $base * 3 $base * 12 #c9d7ff;
 
   &__item {
     display: flex;
@@ -606,15 +640,15 @@ h5 {
 
     &-gallery {
       display: grid;
-      grid-template-rows: repeat(2, 120px);
-      grid-template-columns: repeat(3, 120px);
-      grid-gap: 12px;
+      grid-template-rows: repeat(2, $base * 30);
+      grid-template-columns: repeat(3, $base * 30);
+      grid-gap: $base * 4;
       .image-link {
         position: relative;
         display: block;
         overflow: hidden;
-        border-radius: 5px;
-        box-shadow: 0 15px 50px #e5ebf8;
+        border-radius: $base;
+        box-shadow: 0 $base * 3 $base * 12 #e5ebf8;
 
         .loupe {
           position: absolute;
@@ -623,7 +657,7 @@ h5 {
           display: block;
           width: $base * 16;
           height: $base * 16;
-          background: #fff url(../img/blog-loup.png) no-repeat 50% 50%;
+          background: $color-white url(../img/blog-loup.png) no-repeat 50% 50%;
           border-radius: 100%;
           opacity: 0;
           transition: $transition;
@@ -680,6 +714,14 @@ h5 {
     &-content {
       margin-left: 5%;
 
+      h3 {
+        @include quicksand;
+
+        font-size: $base * 9;
+        margin-bottom: $base * 7;
+        color: #3d4f9f;
+      }
+
       .text {
         margin-bottom: $base * 10;
         font-size: $fs-md;
@@ -723,8 +765,9 @@ h5 {
     display: flex;
     justify-content: space-between;
 
-    h3 {
-      font-weight: $fw_medium;
+    .section-subtitle {
+      font-size: $base * 9;
+      font-weight: $fw-medium;
     }
   }
   &__left,
@@ -747,8 +790,8 @@ h5 {
     position: relative;
     padding: $base * 10 $base * 17 $base * 15;
     border: 1px solid #d8e3fe;
-    background-color: #fff;
-    box-shadow: 0 5px 50px #d8e3fe;
+    background-color: $color-white;
+    box-shadow: 0 $base $base * 12 #d8e3fe;
 
     &-text {
       font-size: $fs-md;
@@ -764,7 +807,7 @@ h5 {
       top: 100%;
       margin-top: -30px;
       overflow: hidden;
-      background-color: #fff;
+      background-color: $color-white;
       border-radius: 100%;
       transform: translateX(-50%);
     }
@@ -780,8 +823,11 @@ h5 {
   margin: 0 auto;
   max-width: 700px;
 
-  h4 {
-    font-weight: $fw_medium;
+  .section-inner {
+    .section-subtitle {
+      font-size: $base * 6;
+      font-weight: $fw_medium;
+    }
   }
 }
 .faq-accordion {
@@ -795,15 +841,16 @@ h5 {
     &--active {
 
       #{$parent}-trigger {
-        font-weight: $fw-bold;
-        color: #495274;
-
         &-icon {
           transform: rotate(0deg) translateX(-1px);
 
           .arrow {
-            stroke: #495274;
+            stroke: $color-primary;
           }
+        }
+        &-text {
+          font-weight: $fw-bold;
+          color: $color-primary;
         }
       }
 
@@ -854,7 +901,7 @@ h5 {
 .section-get-started {
   position: relative;
   text-align: center;
-  color: #fff;
+  color: $color-white;
   background: linear-gradient(#6888ff, #5e80ff);
 
   &::before {
@@ -871,24 +918,25 @@ h5 {
   .section-inner {
     position: relative;
     z-index: 10;
-  }
 
-  h2,h5 {
-    color: #fff;
-  }
-
-  h2 {
-    font-weight: $fw_light;
-
-    span {
-      font-weight: $fw-medium;
+    h2 {
+      color: $color-white;
     }
-  }
 
-  .text {
-    line-height: 2;
-    max-width: 80%;
-    margin: 0 auto $base * 10;
+    .section-subtitle {
+      color: $color-white;
+      font-weight: $fw_light;
+
+      span {
+        font-weight: $fw-medium;
+      }
+    }
+
+    .text {
+      line-height: 2;
+      max-width: 80%;
+      margin: 0 auto $base * 10;
+    }
   }
 }
 // === / GET-STARTED ===
@@ -913,6 +961,7 @@ h5 {
       font-size: $fs-lg;
       font-weight: $fw_bold;
       color: #3d4f9f;
+      text-transform: none;
     }
 
     &-text {
@@ -929,11 +978,11 @@ h5 {
 .form-newsletter {
   display: flex;
 
-  .input {
+  &__input {
     flex-grow: 2;
   }
 
-  .btn {
+  &__btn {
     flex-grow: 1;
     margin-left: $base * 3;
   }

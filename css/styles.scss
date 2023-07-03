@@ -62,24 +62,45 @@ body{
   }
 }
 
+.input {
+  padding: $base * 3 $base * 4;
+  font-size: $fs-sm;
+  color: #7a85ad;
+  border: 1px transparent solid;
+  background-color: #efeff7;
+  border-radius: 2px;
+
+  &--size-lg {
+    padding: $base * 5 $base * 6;
+    border-radius: 5px;
+  }
+}
+
 .btn {
   @include quicksand;
 
   margin: 0;
+  display: inline-block;
   padding: $base * 3 $base * 4;
   font-weight: $fw_bold;
   font-size: $fs-sm;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
   background: none;
   border: 1px transparent solid;
   box-sizing: border-box;
   border-radius: 2px;
   transition: $transition;
 
+  &--size-lg {
+    padding: $base * 5 $base * 15;
+    border-radius: 5px;
+  }
+
   &--primary {
     background-color: #d2e1ff;
-    color: #3f79ff;
+    color: #3a79ff;
 
     &:hover {
       background-color: darken(#d2e1ff, 10%);
@@ -102,6 +123,24 @@ body{
     &:hover {
       background-color: darken(#d2e1ff, 10%);
     }
+
+    &-inverted {
+      color: #565f82;
+      background-color: #fff;
+
+      &:hover {
+        background-color: darken(#fff, 10%);
+      }
+    }
+  }
+
+  &--grayscale {
+    background-color: #e8ecf4;
+    color: #7382a3;
+
+    &:hover {
+      background-color: darken(#e8ecf4, 10%);
+    }
   }
 
   &--no-bg {
@@ -111,6 +150,16 @@ body{
     &:hover {
       color: darken(#adb4d2, 10%);
       border: 1px solid darken(#adb4d2, 10%);
+    }
+
+    &-inverted {
+      color: #c7deff;
+      border-color: #a0b4ff;
+
+      &:hover {
+        color: lighten(#c7d3ff, 10%);
+        border-color: lighten(#a0b4ff, 10%);
+      }
     }
   }
 }
@@ -308,7 +357,7 @@ h5 {
         }
       }
       .text {
-        width: 60%;
+        max-width: 60%;
         margin: 0 auto $base * 5;
         line-height: 2;
       }
@@ -726,22 +775,42 @@ h5 {
 
 // === FAQ ===
 .section-faq {
+  @include quicksand;
+
+  margin: 0 auto;
+  max-width: 700px;
+
   h4 {
     font-weight: $fw_medium;
   }
 }
-
 .faq-accordion {
   @include list-null;
 
   &__item {
+    $parent: &;
+
     border-bottom: 1px solid #d8e3fe;
 
-    //&--active {
-    //  .arrow {
-    //    stroke: #495274
-    //  }
-    //}
+    &--active {
+
+      #{$parent}-trigger {
+        font-weight: $fw-bold;
+        color: #495274;
+
+        &-icon {
+          transform: rotate(0deg) translateX(-1px);
+
+          .arrow {
+            stroke: #495274;
+          }
+        }
+      }
+
+      #{$parent}-content {
+        display: flex;
+      }
+    }
     &-trigger{
       display: flex;
       padding: $base * 4;
@@ -749,24 +818,30 @@ h5 {
 
       &-icon {
         width: $base * 4;
-        text-align: center;
         margin-right: $base * 4;
+        text-align: center;
+        transform: rotate(180deg);
 
         .arrow {
           stroke: #8e96b7
         }
       }
-      &-text {}
+      &-text {
+        font-size: $fs-md;
+      }
     }
+
     &-content{
-      display: flex;
-      padding: 0 $base * 4 $base * 4 $base * 12;
+      display: none;
+      padding: 0 $base * 4 $base * 4 $base * 16;
 
       &-text {
         flex-grow: 1;
+        font-size: $fs-md;
         line-height: 2;
       }
       &-btn {
+        margin-top: $base * 4;
         margin-left: $base * 15;
       }
     }
@@ -777,7 +852,44 @@ h5 {
 
 // === GET-STARTED ===
 .section-get-started {
-  background-color: #6888ff;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(#6888ff, #5e80ff);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: url(../img/get-started-clouds.svg) no-repeat 50% 50%;
+    content: '';
+    z-index: 5;
+  }
+
+  .section-inner {
+    position: relative;
+    z-index: 10;
+  }
+
+  h2,h5 {
+    color: #fff;
+  }
+
+  h2 {
+    font-weight: $fw_light;
+
+    span {
+      font-weight: $fw-medium;
+    }
+  }
+
+  .text {
+    line-height: 2;
+    max-width: 80%;
+    margin: 0 auto $base * 10;
+  }
 }
 // === / GET-STARTED ===
 
@@ -785,6 +897,46 @@ h5 {
 // === NEWSLETTER ===
 .section-newsletter {
   background-color: #fcfdff;
+
+  .section-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    flex-basis: 35%;
+
+    &-title {
+      @include quicksand;
+
+      margin-bottom: $base * 4;
+      font-size: $fs-lg;
+      font-weight: $fw_bold;
+      color: #3d4f9f;
+    }
+
+    &-text {
+      font-size: $fs-md;
+      line-height: 2;
+    }
+  }
+
+  &__right {
+    flex-basis: 50%;
+  }
+}
+
+.form-newsletter {
+  display: flex;
+
+  .input {
+    flex-grow: 2;
+  }
+
+  .btn {
+    flex-grow: 1;
+    margin-left: $base * 3;
+  }
 }
 // === / NEWSLETTER ===
 

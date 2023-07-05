@@ -597,13 +597,23 @@ h2 {
         margin-left: $base;
       }
     }
-
     .aside-image {
       position: absolute;
       top: 0;
       left: 45%;
+      @media (max-width: $breakpoint-xs-max) {
+        display: none;
+      }
+      &-mini {
+        display: none;
+        @media (max-width: $breakpoint-xs-max) {
+          display: block;
+          position: absolute;
+          top: $base * 24;
+          right: $base * 8;
+        }
+      }
     }
-
     @media (min-width: $breakpoint-lg-min) {
       width: 40%;
     }
@@ -870,7 +880,7 @@ h2 {
           width: $base * 16;
           height: $base * 16;
           content: '';
-          background: $color-white url(../img/blog-loup.png) no-repeat 50% 50%;
+          background: $color-white url(../img/blog-loup.webp) no-repeat 50% 50%;
           border-radius: 100%;
           opacity: 0;
           transition: $transition;

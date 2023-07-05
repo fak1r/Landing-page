@@ -610,20 +610,15 @@ h2 {
           display: block;
           position: absolute;
           top: $base * 24;
-          right: $base * 8;
+          right: $base * 4;
         }
       }
     }
     @media (min-width: $breakpoint-lg-min) {
       width: 40%;
     }
-
     @media (max-width: $breakpoint-xs-max) {
-      width: 70%;
-
-      .aside-image {
-        left: 35%;
-      }
+      width: 60%;
     }
   }
 }

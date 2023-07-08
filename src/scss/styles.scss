@@ -268,22 +268,34 @@ h2 {
 
   display: flex;
   justify-content: center;
+}
 
-  &__item {
+.swiper-pagination-bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $base * 6;
+  height: $base * 6;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    display: block;
     width: $base * 2;
     height: $base * 2;
-    cursor: pointer;
+    content: '';
     background-color: #d1d6e3;
     border-radius: 100%;
     transition: $transition;
 
-    &--active {
-      background-color: #5283ff;
-    }
+  }
 
-    & + & {
-      margin-left: $base * 3;
-    }
+  &-active::before {
+    background-color: #5283ff;
+  }
+
+  & + & {
+    margin-left: $base;
   }
 }
 
@@ -399,6 +411,7 @@ h2 {
   position: relative;
   background-color: #f4f7ff;
   padding: 0;
+  overflow: hidden;
 
   .dots {
     position: absolute;
@@ -411,7 +424,10 @@ h2 {
 .slider-hero-image {
   @include list-null;
 
+  display: flex;
+
   &__item {
+    min-width: 100%;
     height: $base * 150;
     text-align: center;
     background-position: 50% 50%;
@@ -855,26 +871,35 @@ h2 {
   }
 }
 
-.slider-wrapper {
+.slider-blog {
   position: relative;
-  margin-bottom: $base * 25;
+  margin-bottom: $base * 10;
 
   @media (max-width: $breakpoint-md-max) {
-    margin-bottom: $base * 15;
+    margin-bottom: $base * 8;
   }
 }
 
-.slider-blog {
-  @include list-null;
-
+.slider-blog-container {
+  position: relative;
+  overflow: hidden;
   background-color: $color-white;
   border: 1px solid #d8e3fe;
   box-shadow: 0 $base * 3 $base * 12 #c9d7ff;
 
+
+}
+
+.slider-blog-wrapper {
+  @include list-null;
+  display: flex;
+
   &__item {
     display: flex;
     justify-content: space-between;
+    min-width: 100%;
     padding: $base * 16 $base * 8;
+    box-sizing: border-box;
 
     &-gallery {
       display: grid;
@@ -1045,6 +1070,8 @@ h2 {
 // === QUOTES ===
 .section-quotes {
   background: linear-gradient(#eaebff, #f6f9ff);
+  overflow: hidden;
+
   .section-inner {
     display: flex;
     justify-content: space-between;
@@ -1059,7 +1086,7 @@ h2 {
   }
   &__left,
   &__right {
-    flex-basis: 45%;
+    width: 45%;
   }
 
   &__left {
@@ -1073,16 +1100,30 @@ h2 {
   }
 }
 
+.slider-quotes-container {
+  width: 50vw;
+  margin-bottom: $base * 20;
+  overflow: hidden;
+}
+
 .slider-quotes {
   @include list-null;
-  margin-bottom: $base * 20;
+
+  display: flex;
 
   &__item {
     position: relative;
+    min-width: 25vw;
     padding: $base * 10 $base * 17 $base * 15;
     border: 1px solid #d8e3fe;
     background-color: $color-white;
     box-shadow: 0 $base $base * 12 #d8e3fe;
+    opacity: .5;
+    transition: opacity $transition;
+
+    &.swiper-slide-active {
+      opacity: 1;
+    }
 
     &-text {
       font-size: $fs-s;
@@ -1097,7 +1138,6 @@ h2 {
       left: 50%;
       top: 100%;
       overflow: hidden;
-      background-color: $color-white;
       border-radius: 100%;
       transform: translate(-50%, $base * -7.5);
     }

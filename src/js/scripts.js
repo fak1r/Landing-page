@@ -59,3 +59,32 @@ const getScrollbarWidth = () => {
 
     return scrollBarWidth;
 }
+
+new Swiper('.section-hero-image', {
+    pagination: {
+        el: '.section-hero-image .dots',
+        clickable: true,
+    },
+});
+
+new Swiper('.slider-blog-container', {
+    loop: true,
+    pagination: {
+        el: '.section-blog .swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.section-blog .swiper-button-next',
+        prevEl: '.section-blog .swiper-button-prev',
+    },
+});
+
+new Swiper('.slider-quotes-container', {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    pagination: {
+        el: '.section-quotes .swiper-pagination',
+        clickable: true,
+    },
+});

@@ -8,6 +8,7 @@
     <meta name="description" content="Landing page">
     <title>Landing Page</title>
     <link rel="stylesheet" href="css/styles.min.css">
+    <script src="../build/js/fslightbox.min.js"></script>
 </head>
 <body>
     <!-- section-header -->
@@ -232,14 +233,14 @@
                         <ul class="slider-blog-wrapper swiper-wrapper">
                             <li class="slider-blog-wrapper__item swiper-slide">
                                 <div class="slider-blog-wrapper__item-gallery">
-                                    <a href="#" class="image-link image-link--b" aria-label="Image 1">
-                                        <img alt="" src="img/blog-pic1.webp"/>
+                                    <a href="img/blog-pic-big1.webp" data-fslightbox="slider-1" class="image-link image-link--b" aria-label="Image 1">
+                                        <img alt="" src="img/blog-pic1.webp" width="252" height="252"/>
                                     </a>
-                                    <a href="#" class="image-link image-link--s-1" aria-label="Image 2">
-                                        <img alt="" src="img/blog-pic2.webp"/>
+                                    <a href="img/blog-pic-big2.webp" data-fslightbox="slider-1" class="image-link image-link--s-1" aria-label="Image 2">
+                                        <img alt="" src="img/blog-pic2.webp" width="120" height="120"/>
                                     </a>
-                                    <a href="#" class="image-link image-link--s-2" aria-label="Image 3">
-                                        <img alt="" src="img/blog-pic3.webp"/>
+                                    <a href="img/blog-pic-big3.webp" data-fslightbox="slider-1" class="image-link image-link--s-2" aria-label="Image 3">
+                                        <img alt="" src="img/blog-pic3.webp" width="120" height="120"/>
                                     </a>
                                 </div>
                                 <div class="slider-blog-wrapper__item-content">
@@ -255,18 +256,18 @@
                             </li>
                             <li class="slider-blog-wrapper__item swiper-slide">
                                 <div class="slider-blog-wrapper__item-gallery">
-                                    <a href="#" class="image-link image-link--b" aria-label="Image 1">
-                                        <img alt="" src="img/blog-pic1.webp"/>
+                                    <a href="img/2blog-pic-big1.webp" data-fslightbox="slider-2" class="image-link image-link--b" aria-label="Image 4">
+                                        <img alt="" src="img/2blog-pic1.png" width="252" height="252"/>
                                     </a>
-                                    <a href="#" class="image-link image-link--s-1" aria-label="Image 2">
-                                        <img alt="" src="img/blog-pic2.webp"/>
+                                    <a href="img/2blog-pic-big2.webp" data-fslightbox="slider-2" class="image-link image-link--s-1" aria-label="Image 5">
+                                        <img alt="" src="img/2blog-pic2.png" width="120" height="120"/>
                                     </a>
-                                    <a href="#" class="image-link image-link--s-2" aria-label="Image 3">
-                                        <img alt="" src="img/blog-pic3.webp"/>
+                                    <a href="img/2blog-pic-big3.webp" data-fslightbox="slider-2" class="image-link image-link--s-2" aria-label="Image 6">
+                                        <img alt="" src="img/2blog-pic3.png" width="120" height="120"/>
                                     </a>
                                 </div>
                                 <div class="slider-blog-wrapper__item-content">
-                                    <h3>How to end looping</h3>
+                                    <h3>How to start chilling</h3>
                                     <div class="text">
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, autem cum error est exercitationem harum, inventore ipsa laudantium magnam repellendus, sapiente similique sint. Temporibus?
                                     </div>
@@ -301,51 +302,43 @@
                     <div class="slider-quotes-container swiper">
                         <ul class="slider-quotes swiper-wrapper">
                             <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
-                                </div>
-                            </li>
-                            <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic.svg" alt="">
+                                    </div>
                                 </div>
                             </li>
                             <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
-                                </div>
-                            </li>
-                            <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Somebody once told me the world is gonna roll me. I ain't the sharpest tool in the shed.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic2.png" alt="">
+                                    </div>
                                 </div>
                             </li>
                             <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Are we there yet? Are we there yet? Are we there yet? Are we there yet? Are we there yet? Are we there yet?
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img class="slider-quotes-item-content__photo-pic3" src="img/quotes-pic3.png" alt="">
+                                    </div>
                                 </div>
                             </li>
                             <li class="slider-quotes__item swiper-slide">
-                                <div class="slider-quotes__item--text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                                </div>
-                                <div class="slider-quotes__item-photo">
-                                    <img src="img/quotes-pic.svg" alt="">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Please, give 5 stars to this <a href="https://github.com/fak1r/Landing-page">repository</a>.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic4.png" alt="">
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -572,5 +565,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <script src="./js/scripts.min.js"></script>
+    <script src="./js/fslightbox.min.js"></script>
 </body>
 </html>

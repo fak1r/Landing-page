@@ -82,7 +82,6 @@ new Swiper('.slider-blog-container', {
 new Swiper('.slider-quotes-container', {
     loop: true,
     slidesPerView: 'auto',
-    spaceBetween: 30,
     pagination: {
         el: '.section-quotes .swiper-pagination',
         clickable: true,

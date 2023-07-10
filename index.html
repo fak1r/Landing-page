@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Landing page">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <script src="../build/js/fslightbox.min.js"></script>
 </head>
 <body>
     <!-- section-header -->
     <header class="section-outer section-header">
         <div class="section-inner section-inner--wide vertical-indent vertical-indent--s">
-            <div class="main-navigation">
+            <div class="main-navigation" id="main-navigation">
                 <h1 class="logo">
                     <a class="logo__link" href="#" aria-label="Logo">
                         <span class="visually-hidden">Logo</span>
@@ -78,9 +79,9 @@
     <!-- / section-header -->
     <main>
         <!-- section-hero-image -->
-        <section class="section-outer section-hero-image">
-            <ul class="slider-hero-image">
-                <li class="slider-hero-image__item" style="background-image: url(img/hero-image1.webp)">
+        <section class="section-outer section-hero-image swiper">
+            <ul class="slider-hero-image swiper-wrapper">
+                <li class="slider-hero-image__item swiper-slide" style="background-image: url(img/hero-image1.webp)">
                     <div class="section-inner slider-hero-image__item-content vertical-indent vertical-indent--l" >
                         <h2>PLAN YOUR LIFE</h2>
                         <div class="section-subtitle">Increase your <span>productivity</span></div>
@@ -92,12 +93,32 @@
                         </div>
                     </div>
                 </li>
+                <li class="slider-hero-image__item swiper-slide" style="background-image: url(img/hero-image1.webp)">
+                    <div class="section-inner slider-hero-image__item-content vertical-indent vertical-indent--l" >
+                        <h2>SECOND SLIDE</h2>
+                        <div class="section-subtitle">Another slide<span> WOW!</span></div>
+                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et mollitia neque repellendus?</div>
+                        <div class="btn-icon-text-wrapper">
+                            <a href="#" aria-label="Play">
+                                <span class="icon-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="slider-hero-image__item swiper-slide" style="background-image: url(img/hero-image1.webp)">
+                    <div class="section-inner slider-hero-image__item-content vertical-indent vertical-indent--l" >
+                        <h2>NO CONTENT HERE</h2>
+                        <div class="section-subtitle">Thanks for <span>watching</span></div>
+                        <div class="text">Aliquam aliquid, assumenda consectetur consequatur cupiditate debitis esse harum minus placeat quas, quasi quidem, rerum saepe suscipit ullam vero voluptas voluptatem voluptatibus.</div>
+                        <div class="btn-icon-text-wrapper">
+                            <a href="#" aria-label="Play">
+                                <span class="icon-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>
-            <ul class="dots">
-                <li class="dots__item dots__item--active"></li>
-                <li class="dots__item"></li>
-                <li class="dots__item"></li>
-            </ul>
+            <ul class="dots swiper-pagination"></ul>
         </section>
         <!-- / section-hero-image -->
 
@@ -206,40 +227,63 @@
             <div class="section-inner vertical-indent vertical-indent--l">
                 <h2 class="ta-c">OUR RESOURCES</h2>
                 <div class="ta-c section-subtitle">Start reading our blog</div>
-                <div class="slider-wrapper">
-                    <ul class="slider-blog">
-                        <li class="slider-blog__item">
-                            <div class="slider-blog__item-gallery">
-                                <a href="#" class="image-link image-link--b" aria-label="Image 1">
-                                    <img alt="" src="img/blog-pic1.webp"/>
-                                </a>
-                                <a href="#" class="image-link image-link--s-1" aria-label="Image 2">
-                                    <img alt="" src="img/blog-pic2.webp"/>
-                                </a>
-                                <a href="#" class="image-link image-link--s-2" aria-label="Image 3">
-                                    <img alt="" src="img/blog-pic3.webp"/>
-                                </a>
-                            </div>
-                            <div class="slider-blog__item-content">
-                                <h3>How to start planning</h3>
-                                <div class="text">
-                                    Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti. Natum petentium principes mei ea. Tota everti periculis vis ei, quas tibique pro at, eos ut decore ...
+
+                <div class="slider-blog">
+                    <div class="slider-blog-container swiper">
+                        <ul class="slider-blog-wrapper swiper-wrapper">
+                            <li class="slider-blog-wrapper__item swiper-slide">
+                                <div class="slider-blog-wrapper__item-gallery">
+                                    <a href="img/blog-pic-big1.webp" data-fslightbox="slider-1" class="image-link image-link--b" aria-label="Image 1">
+                                        <img alt="" src="img/blog-pic1.webp" width="252" height="252"/>
+                                    </a>
+                                    <a href="img/blog-pic-big2.webp" data-fslightbox="slider-1" class="image-link image-link--s-1" aria-label="Image 2">
+                                        <img alt="" src="img/blog-pic2.webp" width="120" height="120"/>
+                                    </a>
+                                    <a href="img/blog-pic-big3.webp" data-fslightbox="slider-1" class="image-link image-link--s-2" aria-label="Image 3">
+                                        <img alt="" src="img/blog-pic3.webp" width="120" height="120"/>
+                                    </a>
                                 </div>
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn--primary">Read now</a>
-                                    <a href="#" class="btn btn--no-bg">Add to your bookmarks</a>
+                                <div class="slider-blog-wrapper__item-content">
+                                    <h3>How to start planning</h3>
+                                    <div class="text">
+                                        Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti. Natum petentium principes mei ea. Tota everti periculis vis ei, quas tibique pro at, eos ut decore ...
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn--primary">Read now</a>
+                                        <a href="#" class="btn btn--no-bg">Add to your bookmarks</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn-blog btn-blog--prev" aria-label="Previous slide"></a>
-                    <a href="#" class="btn-blog btn-blog--next" aria-label="Next slide"></a>
+                            </li>
+                            <li class="slider-blog-wrapper__item swiper-slide">
+                                <div class="slider-blog-wrapper__item-gallery">
+                                    <a href="img/2blog-pic-big1.webp" data-fslightbox="slider-2" class="image-link image-link--b" aria-label="Image 4">
+                                        <img alt="" src="img/2blog-pic1.png" width="252" height="252"/>
+                                    </a>
+                                    <a href="img/2blog-pic-big2.webp" data-fslightbox="slider-2" class="image-link image-link--s-1" aria-label="Image 5">
+                                        <img alt="" src="img/2blog-pic2.png" width="120" height="120"/>
+                                    </a>
+                                    <a href="img/2blog-pic-big3.webp" data-fslightbox="slider-2" class="image-link image-link--s-2" aria-label="Image 6">
+                                        <img alt="" src="img/2blog-pic3.png" width="120" height="120"/>
+                                    </a>
+                                </div>
+                                <div class="slider-blog-wrapper__item-content">
+                                    <h3>How to start chilling</h3>
+                                    <div class="text">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet, autem cum error est exercitationem harum, inventore ipsa laudantium magnam repellendus, sapiente similique sint. Temporibus?
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn--primary">Read now</a>
+                                        <a href="#" class="btn btn--no-bg">Add to your bookmarks</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="btn-blog btn-blog--prev swiper-button-prev" aria-label="Previous slide"></a>
+                    <a href="#" class="btn-blog btn-blog--next swiper-button-next" aria-label="Next slide"></a>
                 </div>
-                <ul class="dots">
-                    <li class="dots__item dots__item--active"></li>
-                    <li class="dots__item"></li>
-                    <li class="dots__item"></li>
-                </ul>
+                <ul class="dots swiper-pagination"></ul>
             </div>
         </section>
         <!-- / section-blog -->
@@ -255,27 +299,51 @@
                     </div>
                 </div>
                 <div class="section-quotes__right">
-                    <ul class="slider-quotes">
-                        <li class="slider-quotes__item">
-                            <div class="slider-quotes__item--text">
-                                Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
-                            </div>
-                            <div class="slider-quotes__item-photo">
-                                <img src="img/quotes-pic.svg" alt="">
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="dots">
-                        <li class="dots__item dots__item--active"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                        <li class="dots__item"></li>
-                    </ul>
+                    <div class="slider-quotes-container swiper">
+                        <ul class="slider-quotes swiper-wrapper">
+                            <li class="slider-quotes__item swiper-slide">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Quidam vocibus eum ne, erat consectetuer voluptatibus ut nam. Eu usu vidit tractatos, vero tractatos ius an, in mel diceret persecuti.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic.svg" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="slider-quotes__item swiper-slide">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Somebody once told me the world is gonna roll me. I ain't the sharpest tool in the shed.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic2.png" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="slider-quotes__item swiper-slide">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Are we there yet? Are we there yet? Are we there yet? Are we there yet? Are we there yet? Are we there yet?
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img class="slider-quotes-item-content__photo-pic3" src="img/quotes-pic3.png" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="slider-quotes__item swiper-slide">
+                                <div class="slider-quotes-item-content">
+                                    <div class="slider-quotes-item-content__text">
+                                        Please, give 5 stars to this <a href="https://github.com/fak1r/Landing-page">repository</a>.
+                                    </div>
+                                    <div class="slider-quotes-item-content__photo">
+                                        <img src="img/quotes-pic4.png" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="dots swiper-pagination"></ul>
                 </div>
             </div>
         </section>
@@ -492,5 +560,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script src="./js/scripts.min.js"></script>
+    <script src="./js/fslightbox.min.js"></script>
 </body>
 </html>
